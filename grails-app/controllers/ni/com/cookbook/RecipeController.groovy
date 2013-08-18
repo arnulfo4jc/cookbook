@@ -2,12 +2,36 @@ package ni.com.cookbook
 
 class RecipeController {
 
-	static defaultAction = "actionHere"
+	static defaultAction = "list"
 	static allowedMethods = [
-		list:"GET"
+		list:"GET",
+		delete:"GET"
 	]
 
-    def index() {}
+    def list() {
+    	def recipes
+    	def role = session?.user.role
 
-    def list(){}
+    	if (role == "admin" || "collaborator") {
+    		recipes = Recipe.list()
+    	} else {
+    		recipes = Recipe.byUser(session.user).list(params)
+    	}
+
+    	[recipes:recipes]
+    }
+
+    def delete(Integer id) {
+    	def recipe = Recipe.findByUserAndId(session?.user, id)
+
+    	if (!recipe) {
+    		response.sendError 404
+    	}
+
+    	recipe.delete()
+    	flash.message = "Reseta borrada"
+
+    	redirect action:"list"
+    }
+
 }
