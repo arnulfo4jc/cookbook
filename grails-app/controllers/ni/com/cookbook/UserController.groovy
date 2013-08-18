@@ -35,27 +35,15 @@ class UserController {
 
 
     def authenticate() {
-        
-        def userInstance = User.findAllByEmailAndPasswordAndEnable(params.email, params.password.encodeAsSHA1(), true)
- 		
+        def userInstance = User.findByEmailAndPasswordAndEnable(params.email, params.password.encodeAsSHA1(), true)
+
     	if(!userInstance) {
             flash.message = message(code:'ni.com.cookbook.error')
     		redirect(action:'login')
     		return false
     	}
 
-    	userInstance.role.each{session.user = it}
-
-    	switch(session.user) {
-            case 'admin':
-                redirect(controller:"recipe", action:"list")  
-                break
-            case 'client':
-               	redirect(controller:"recipe", action:"list") 
-                break
-            case 'user':
-	           	redirect(controller:"recipe", action:"list") 
-	            break
-        }
+        session.user = userInstance
+        redirect(controller:"recipe", action:"list")
 	}
 }

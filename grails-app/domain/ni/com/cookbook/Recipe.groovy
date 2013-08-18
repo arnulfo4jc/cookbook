@@ -3,7 +3,7 @@ package ni.com.cookbook
 class Recipe {
 
     String name
-    String type 
+    String type
     byte[] image
     Integer vote = 0
     Integer serve
@@ -19,12 +19,18 @@ class Recipe {
         image nullable:true, maxSize:250000
         vote min:0
         serve blank:false, min:1
-        occation inList:["hollyweek", "Christmas", "DayDead"]
+        occation inList:["hollyweek", "christmas", "dayDead"]
         method blank:false
     }
 
     static namedQueries = {
+        byUser { user ->
+            eq "user", user
+        }
 
+        byRole { role ->
+            eq "role", role
+        }
     }
 
     static mapping = {
@@ -32,7 +38,7 @@ class Recipe {
     }
 
     String toString() {
-
+        name
     }
 
     static belongsTo = [user:User]
