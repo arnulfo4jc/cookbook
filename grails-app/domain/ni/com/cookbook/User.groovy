@@ -1,12 +1,12 @@
 package ni.com.cookbook
 
-class User {
+class User implements Serializable {
 
     String email
     String fullName
     String password
-    String role 
-    boolean enable 
+    String role
+    boolean enable
     Date dateCreated
 	Date lastUpdated
 
@@ -32,6 +32,6 @@ class User {
     String toString() {
 
     }
-    
-    static hasMany = [recipe:Recipe]    
+
+    static hasMany = [recipes:Recipe]
 }
