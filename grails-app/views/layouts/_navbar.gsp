@@ -9,12 +9,12 @@
           <a href="#" class="navbar-brand">CookBook</a>
           <div class="nav-collapse collapse navbar-responsive-collapse">
               <ul class="nav navbar-nav pull-right">
-              <g:if test="${session.user=='admin' || session.user=='collaborator' || session.user=='user'}">
+              <g:if test="${session.user.role=='admin' || session.user.role=='collaborator' || session.user.role=='user'}">
               <li class="">
                   <g:link controller="recipe" action="list" id="" title="${message(code:'ni.com.cookbook.recipe')}"  class="toolrecipe" data-placement="bottom"><span class="glyphicon glyphicon-list"></span>
                   </g:link>
               </li>
-              <g:if test="${session.user=='admin'}">
+              <g:if test="${session.user.role=='admin'}">
               <li class="">
                   <g:link controller="user" action="list" id="" title="${message(code:'ni.com.cookbook.users')}"  class="toolusers" data-placement="bottom"><span class="glyphicon glyphicon-user"></span>
                   </g:link>
