@@ -1,6 +1,6 @@
 package ni.com.cookbook
 
-class Ingredient {
+class Ingredient implements Serializable {
 
     String mAndQ 
     String name

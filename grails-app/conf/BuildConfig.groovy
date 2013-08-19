@@ -40,6 +40,7 @@ grails.project.dependency.resolution = {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes e.g.
 
         // runtime 'mysql:mysql-connector-java:5.1.22'
+        compile "org.grails:grails-webflow:$grailsVersion"
     }
 
     plugins {
@@ -55,5 +56,7 @@ grails.project.dependency.resolution = {
         build ":tomcat:$grailsVersion"
         //compile ":jquery-ui:1.8.24"
         compile ':cache:1.0.1'
+
+        compile ':webflow:2.0.8.1'
     }
 }

@@ -7,7 +7,7 @@
 	<r:require modules="bootstrap,application"/>
 </head>
 <body>
-	<g:link action="create" class="pull-right">Crear receta</g:link>
+	<g:link event="create" class="pull-right">Crear receta</g:link>
 	<g:if test="${recipes}">
 		<table class="table">
 			<thead>

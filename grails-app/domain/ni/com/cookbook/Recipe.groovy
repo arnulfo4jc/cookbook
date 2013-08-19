@@ -1,6 +1,6 @@
 package ni.com.cookbook
 
-class Recipe {
+class Recipe implements Serializable {
 
     String name
     String type
@@ -20,7 +20,7 @@ class Recipe {
         vote min:0
         serve blank:false, min:1
         occation inList:["hollyweek", "christmas", "dayDead"]
-        method blank:false
+        method nullable:true
     }
 
     static namedQueries = {

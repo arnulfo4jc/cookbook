@@ -21,6 +21,42 @@ class RecipeController {
     	[recipes:recipes]
     }
 
+    def createFlow = {
+    	init {
+    		action {
+    			[recipe:new Recipe(params), user:session?.user]
+    		}
+
+    		on("success").to "createRecipe"
+    	}
+
+    	createRecipe {
+    		on("create") {
+    			def recipe = new Recipe(
+    				name:params.name,
+    				type:params?.type,
+    				serve:params.int("serve"),
+    				occation:params?.occation,
+    				user:flow.user
+    			)
+
+    			if (!recipe.save()) {
+    				flow.recipe = recipe
+    				return error()
+    			}
+
+   			}.to "ingredients"
+    	}
+
+    	ingredients {
+
+    	}
+
+    	done {
+    		redirect controller:"recipe", action:"list"
+    	}
+    }
+
     def delete(Integer id) {
     	def recipe = Recipe.findByUserAndId(session?.user, id)
 

@@ -27,7 +27,7 @@ class BootStrap {
     			method:'1 cocer un caballo, etc...'
     			)
 
-    		jose.addToRecipe(arrozCholenco)
+    		jose.addToRecipes(arrozCholenco)
 
     		if (!arrozCholenco.save()) {
     			arrozCholenco.errors.allErrors.each{
