@@ -22,7 +22,7 @@
                         </li>
                     </g:if>
                     <li>
-                      <g:link controller="login" action="edit" title="${message(code:'ni.com.cookbook.profile')}" class="toolprofile" data-placement="bottom"><span class="glyphicon glyphicon-edit"></span></g:link>
+                      <g:link controller="user" action="profile" title="${message(code:'ni.com.cookbook.profile')}" class="toolprofile" data-placement="bottom"><span class="glyphicon glyphicon-edit"></span></g:link>
                     </li>
                     <li>
                         <g:link controller="user" action="logout" title="${message(code:'ni.com.cookbook.logout')}" class="toollogout" data-placement="bottom"><span class="glyphicon glyphicon-off"></span></g:link>

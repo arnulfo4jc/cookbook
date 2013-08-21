@@ -46,4 +46,6 @@ class UserController {
         session.user = userInstance
         redirect(controller:"recipe", action:"list")
 	}
+
+    def profile(){}
 }
