@@ -5,14 +5,14 @@ class User implements Serializable {
     String email
     String fullName
     String password
-    String role
+    String role = "user"
     boolean enable
     Date dateCreated
 	Date lastUpdated
 
     static constraints = {
         email blank:false, email:true, unique:true
-        fullName blank:false, maxSize:50
+        fullName nullable:true, maxSize:50
         password blank:false
         role inList:["admin", "user", "collaborator"]
     }

@@ -16,11 +16,11 @@
                     <li>
                       <g:link controller="recipe" action="list" title="${message(code:'ni.com.cookbook.recipe')}" class="toolrecipe" data-placement="bottom"><span class="glyphicon glyphicon-list"></span></g:link>
                     </li>
-                  
-                    <li>
-                        <g:link controller="user" action="list" title="${message(code:'ni.com.cookbook.users')}" class="toolusers" data-placement="bottom"><span class="glyphicon glyphicon-user"></span></g:link>
-                    </li>
-                  
+                    <g:if test="${session.user.role=='admin'}">
+                        <li>
+                            <g:link controller="user" action="list" title="${message(code:'ni.com.cookbook.users')}" class="toolusers" data-placement="bottom"><span class="glyphicon glyphicon-user"></span></g:link>
+                        </li>
+                    </g:if>
                     <li>
                       <g:link controller="login" action="edit" title="${message(code:'ni.com.cookbook.profile')}" class="toolprofile" data-placement="bottom"><span class="glyphicon glyphicon-edit"></span></g:link>
                     </li>
