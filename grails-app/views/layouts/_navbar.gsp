@@ -28,7 +28,9 @@
                         <g:link controller="user" action="logout" title="${message(code:'ni.com.cookbook.logout')}" class="toollogout" data-placement="bottom"><span class="glyphicon glyphicon-off"></span></g:link>
                     </li>
                 </g:if>
-
+                
+                <g:if test="${controllerName == 'user' && (actionName=='create'|| actionName=='login' || actionName=='save')}">
+                <g:if test="${!session.user}">
                 <li class="dropdown">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                     <g:message code="ni.com.cookbook.language"/><b class="caret"></b></a>
@@ -36,7 +38,8 @@
                         <g:render template="/layouts/language-toolbar"/>
                     </ul>
                 </li>
-
+                </g:if>
+                </g:if>
             </ul> 
         </div><!-- /.nav-collapse -->
     </div><!-- /.container -->

@@ -3,28 +3,14 @@
     <legend><g:message code="ni.com.cookbook.createuser"/></legend>
     
     <div class="form-group">
-      <label for="fullName"><g:message code="ni.com.cookbook.fullname"/></label>
-      <g:textField type="text" class="form-control" name="fullName" placeholder="${message(code:'ni.com.cookbook.fullname')}"/>
-    </div>
-
-    <div class="form-group">
-      <label for="email"><g:message code="ni.com.cookbook.email"/></label>
       <g:textField type="text" class="form-control" name="email" placeholder="${message(code:'ni.com.cookbook.email')}"/>
     </div>
 
     <div class="form-group">
-      <label for="password"><g:message code="ni.com.cookbook.password"/></label>
       <g:passwordField class="form-control" name="password" placeholder="${message(code:'ni.com.cookbook.password')}"/>
     </div>
     
-    <g:if test="${session.user='user' || session.user=='collaborator'}">
-      <div class="form-group">
-        <label for="passconfirm"><g:message code="ni.com.cookbook.confirmpass"/></label>
-        <g:passwordField class="form-control" name="passconfirm" placeholder="${message(code:'ni.com.cookbook.confirmpass')}"/>
-      </div>
-    </g:if>
-
-    <g:if test="${session.user=='admin'}">
+    <g:if test="${session?.user?.role=='admin'}">
       <div class="form-group">
         <label for="role"><g:message code="ni.com.cookbook.role"/></label>
         <g:select name="role" from="${userInstance.constraints.role.inList}" value="${userInstance?.role}" valueMessagePrefix="teachers.role"/>

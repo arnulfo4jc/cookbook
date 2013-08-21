@@ -3,12 +3,10 @@
     <legend><g:message code="ni.com.cookbook.login"/></legend>
     
     <div class="form-group">
-      <label for="email"><g:message code="ni.com.cookbook.email"/></label>
       <g:textField type="text" class="form-control" name="email" autofocus="true" placeholder="${message(code:'ni.com.cookbook.email')}"/>
     </div>
 
     <div class="form-group">
-      <label for="exampleInputPassword"><g:message code="ni.com.cookbook.password"/></label>
       <g:passwordField class="form-control" name="password" placeholder="${message(code:'ni.com.cookbook.password')}"/>
     </div>
 
