@@ -10,10 +10,15 @@
 	<g:render template="/layouts/navbar"/>
 	<div class="container">
 		<div class="row">
-			<div class="col-lg-4">
-				
+			<div class="col-lg-3">
+				<div class="image">
+					FOTO 
+				</div>
+				<div class="email">
+					
+				</div>
 			</div>
-			<div class="col-lg-8">
+			<div class="col-lg-9">
 				<g:layoutBody/>
 			</div>
 		</div>

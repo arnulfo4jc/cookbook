@@ -1,4 +1,3 @@
-<form>
   <fieldset>
     <legend><g:message code="ni.com.cookbook.login"/></legend>
     
@@ -22,5 +21,4 @@
       <g:message code="ni.com.cookbook.btnregistration"/>
     </g:link>  
   </fieldset>
-</form>
 
