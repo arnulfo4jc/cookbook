@@ -3,7 +3,6 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Recetas</title>
-	<meta name="layout" content="list">
 	<r:require modules="bootstrap,application"/>
 </head>
 <body>

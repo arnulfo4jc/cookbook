@@ -37,6 +37,7 @@ class RecipeController {
     				type:params?.type,
     				serve:params.int("serve"),
     				occation:params?.occation,
+                    method:params?.method,
     				user:flow.user
     			)
 
@@ -45,11 +46,30 @@ class RecipeController {
     				return error()
     			}
 
+                [recipe:recipe]
+
    			}.to "ingredients"
     	}
 
     	ingredients {
+            on("addIngredient") {
+                def ingredient = new Ingredient(params)
 
+                if (!ingredient.validate(["mAndQ", "name"])) {
+                    flow.ingredient = ingredient
+                    return error()
+                }
+
+                flow.recipe.addToIngredients(ingredient)
+
+                [ingredients:flow.recipe.ingredients]
+            }.to "ingredients"
+
+            on("deleteRecipe"){
+                flow.recipe.delete()
+            }.to "done"
+
+            on("done").to "done"
     	}
 
     	done {

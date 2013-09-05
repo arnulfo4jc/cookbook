@@ -29,10 +29,15 @@
 
 		<div class="form-group">
 			<label for="occation">Temporada del anio</label>
-			<g:select name="occation" from="${recipe?.constraints?.occation?.inList}" value="${recipe?.occation}" class="form-control"/>
+			<g:select name="occation" from="${recipe?.constraints?.occation?.inList}" value="${recipe?.occation}" noSelection="['':'-General-']" class="form-control"/>
 		</div>
 
-		<g:submitButton name="create" value="Crear receta" class="btn btn-primary"/>
+		<div class="form-group">
+			<label for="method">Metodo</label>
+			<g:textArea name="method" value="${recipe?.method}" class="form-control" style="resize:vertical;"/>
+		</div>
+
+		<g:submitButton name="create" value="Agregar ingredientes" class="btn btn-primary"/>
 	</g:form>
 </body>
 </html>
