@@ -10,7 +10,11 @@
       <g:passwordField class="form-control" name="password" placeholder="${message(code:'ni.com.cookbook.password')}"/>
     </div>
     
+<<<<<<< HEAD
     <g:if test="${session?.user?.role=='admin'}">
+=======
+    <g:if test="${session.user}">
+>>>>>>> profile
       <div class="form-group">
         <label for="role"><g:message code="ni.com.cookbook.role"/></label>
         <g:select name="role" from="${userInstance.constraints.role.inList}" value="${userInstance?.role}" valueMessagePrefix="teachers.role"/>
@@ -40,5 +44,3 @@
     </g:link>   
 
     </fieldset>
-
-

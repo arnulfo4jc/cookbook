@@ -5,20 +5,22 @@ class User implements Serializable {
     String email
     String fullName
     String password
-    String role
+    String role = "user"
+    byte[] avatar
     boolean enable
     Date dateCreated
 	Date lastUpdated
 
     static constraints = {
+        avatar nullable:true, maxSize:250000
         email blank:false, email:true, unique:true
-        fullName blank:false, maxSize:50
+        fullName nullable:true, maxSize:50
         password blank:false
         role inList:["admin", "user", "collaborator"]
     }
 
     def beforeInsert() {
-        password = password.encodeAsSHA1()
+        //password = password.encodeAsSHA1()
     }
 
     static namedQueries = {
