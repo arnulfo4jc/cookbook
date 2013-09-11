@@ -23,7 +23,7 @@
 	</div>
 	
 	<g:form  controller= "user" action="save" class="form-inline">
-		<g:if test="${session.user!='user'}">
+		<g:if test="${session.user=='user'}">
 			<g:hiddenField name="role" value="user"/>
 		</g:if>
 		<g:render template="frcreate"/>
