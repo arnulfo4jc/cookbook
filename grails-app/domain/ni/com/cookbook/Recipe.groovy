@@ -2,9 +2,9 @@ package ni.com.cookbook
 
 class Recipe implements Serializable {
 
+    byte[] image
     String name
     String type
-    byte[] image
     Integer vote = 0
     Integer serve
     String occation
@@ -15,9 +15,9 @@ class Recipe implements Serializable {
 	Date lastUpdated
 
     static constraints = {
+        image nullable:true, maxSize:250000
         name blank:false, maxSize:70
         type inList:["Comida", "Bebida", "Postre", "Dulce"]
-        image nullable:true, maxSize:250000
         vote min:0
         serve blank:false, min:1
         occation inList:["Semana Santa", "Navidad", "Dia de los muertos"], maxSize:255
@@ -42,7 +42,10 @@ class Recipe implements Serializable {
         name
     }
 
+    List alias
+    List ingredients
+
     static belongsTo = [user:User]
-    static hasMany = [alias:String, ingredients:Ingredient]
+    static hasMany = [alias:String, ingredients:String]
 
 }

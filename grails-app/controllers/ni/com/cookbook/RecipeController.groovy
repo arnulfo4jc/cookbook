@@ -53,17 +53,23 @@ class RecipeController {
 
     	ingredients {
             on("addIngredient") {
-                def ingredient = new Ingredient(params)
-
-                if (!ingredient.validate(["mAndQ", "name"])) {
-                    flow.ingredient = ingredient
+                //check in params there is a ingredinet key with value
+                if (!params?.ingredient) {
                     return error()
                 }
 
-                flow.recipe.addToIngredients(ingredient)
+                //check if there are ingredients whit this name
+                if (flow?.recipe?.ingredients?.contains(params.ingredient)) {
+                    return error()
+                }
 
+                flow.recipe.addToIngredients(params.ingredient)
                 [ingredients:flow.recipe.ingredients]
             }.to "ingredients"
+
+            on("deleteIngredient") {
+                flow.recipe.removeFromIngredients(params?.ingredient)
+            }.to("ingredients")
 
             on("deleteRecipe"){
                 flow.recipe.delete()
