@@ -55,7 +55,7 @@ class UserController {
             switch(params.flag) {
                 case 'changepassword':
                     if (cmd.hasErrors()) {
-                        render(view:"profile", model:[cmd:cmd])
+                        render(view:"profile", model:[userInstance:session.user, cmd:cmd, activepassword:"active", activepersonal:""])
                         flash.message="errors"
                         return false
                     }
@@ -64,8 +64,8 @@ class UserController {
             
                     if (userInstance.save(flush:true)) {
                         session.user = userInstance
-                        flash.message="su contrasena ha sido cambiada correctamente"
-                        redirect(action:"profile", model:[userInstance:userInstance])
+                        flash.message= message(code:'ni.com.cookbook.passwordchanged')
+                        render(view:"profile", model:[userInstance:userInstance,activepassword:"active", activepersonal:""])
                     }else{
                         flash.message="errors"
                     }   
@@ -92,16 +92,16 @@ class UserController {
                         case 'true':
                             if(user.save(flush:true)){
                                 session.user = user
-                                flash.message="Sus datos han sido corregidos correctamente"
-                                render(view:"profile",model:[userInstance:user])
+                                flash.message=message(code:'ni.com.cookbook.datachanged')
+                                render(view:"profile",model:[userInstance:user,activepersonal:"active", activepassword:""])
                             }else{
-                                render(view:"profile", model:[cmd:user])
+                                render(view:"profile", model:[userInstance:user, cmd:user, activepersonal:"active", activepassword:""])
                                 flash.message="errors"
                                 return false
                             }
                         break
                         case 'false':
-                            [userInstance:user]
+                            [userInstance:user, activepersonal:"active", activepassword:""]
                         break
                     }
                      
@@ -110,7 +110,7 @@ class UserController {
             
             
         }else{
-            [userInstance:session?.user]
+            [userInstance:session?.user,activepersonal:"active"]
         }
 
     }
@@ -121,6 +121,10 @@ class UserController {
         userInstance = User.get(params.id)
         response.setContentLength(userInstance.avatar.length)
         response.outputStream.write(userInstance.avatar)
+    }
+
+    def list(){
+        [userInstance:User.list()]
     }
 
 }
