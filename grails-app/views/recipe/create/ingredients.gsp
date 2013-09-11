@@ -15,13 +15,8 @@
 
 	<g:form>
 		<div class="form-group">
-			<label for="mAndQ">Media y cantidad</label>
-			<g:textField name="mAndQ" value="${ingredient?.mAndQ}" class="form-control" autofocus="true"/>
-		</div>
-
-		<div class="form-group">
-			<label for="name">Ingrediente</label>
-			<g:textField name="name" value="${ingredient?.name}" class="form-control"/>
+			<label for="ingredient">Ingrediente</label>
+			<g:textField name="ingredient" value="${ingredient?.ingredient}" class="form-control" autofocus="true"/>
 		</div>
 
 		<g:submitButton name="addIngredient" value="Agregar ingrediente" class="btn btn-primary"/>
@@ -38,9 +33,9 @@
 			<tbody>
 				<g:each in="${ingredients}" var="ingredient">
 					<tr>
-						<td>${ingredient.mAndQ} de ${ingredient.name}</td>
+						<td>${ingredient}</td>
 						<td style="width:1px;">
-							<g:link event="deleteIngredient" id="${ingredient.id}">
+							<g:link event="deleteIngredient" params="[ingredient:ingredient]">
 								<span class="glyphicon glyphicon-trash"></span>
 							</g:link>
 						</td>

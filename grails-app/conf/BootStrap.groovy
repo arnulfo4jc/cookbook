@@ -27,6 +27,9 @@ class BootStrap {
         			method:'El arroz en leche se prepara mesclando leche con ...'
         			)
 
+                arrozEnLeche.addToIngredients("1/2 libra de arroz")
+                arrozEnLeche.addToIngredients("1 litro de agua")
+
         		jose.addToRecipes(arrozEnLeche)
 
         		if (!arrozEnLeche.save()) {
@@ -35,7 +38,7 @@ class BootStrap {
         			}
         		}
 
-        		arrozEnLeche.addToAlias("ArrozAlahorse")
+        		arrozEnLeche.addToAlias("Yommi")
     		break
     	}
     }
